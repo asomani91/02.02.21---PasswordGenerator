@@ -1,10 +1,21 @@
-// Assignment Code
+
 var generateBtn = document.querySelector("#generate");
-function generatePassword(){
-var passwordLength = prompt("Choose A Password Length Between 8 & 128")
-var options = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-  confirm("Choose A Character Type")
-} 
+
+var number = "0123456789"
+var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"  
+var lowercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var specialCharacter =  "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+function generatePassword() {
+  var confirmPasswordLength = prompt("Choose a password length between 8 & 128");
+  console.log(confirmPasswordLength);
+
+  var confirmUpperCase = prompt("Would you like to include uppercase letters?");
+  console.log(confirmUpperCase);
+
+
+  
+}
 
 // Write password to the #password input
 function writePassword() {
