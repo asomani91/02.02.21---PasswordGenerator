@@ -2,14 +2,23 @@
 var generateBtn = document.querySelector("#generate");
 
 var number = "0123456789"
-var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"  
+var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"
 var lowercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var specialCharacter =  "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var password = [number, uppercaseLetter, lowercaseLetter, specialCharacter]
 
-function writePassword() {
+function generatePassword() {
   var confirmPasswordLength = prompt("Choose a password length between 8 & 128")
-  console.log(typeof parseInt(confirmPasswordLength));
+  console.log(parseInt(confirmPasswordLength));
+  if (confirmPasswordLength < 8) {
+    alert ("Password length must be at least 8 characters")
+    return;
+  };
+
+  if (confirmPasswordLength > 128) {
+    alert ("Password length must be no more than 128 characters")
+    return;
+  };
 
   var confirmNumber = confirm("Would like to include a number?")
   console.log(confirmNumber);
@@ -22,11 +31,11 @@ function writePassword() {
 
   var confirmSpecialCharacter = confirm("Would you like special characters?")
   console.log(confirmSpecialCharacter);
-};
+}
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
+function writePassword(){
+  var password = generatePassword()
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
