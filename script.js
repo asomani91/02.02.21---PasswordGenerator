@@ -4,19 +4,19 @@ var generateBtn = document.querySelector("#generate");
 var number = "0123456789"
 var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"
 var lowercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var specialCharacter =  "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var specialCharacter = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var password = [number, uppercaseLetter, lowercaseLetter, specialCharacter]
 
 function generatePassword() {
   var confirmPasswordLength = prompt("Choose a password length between 8 & 128")
   console.log(parseInt(confirmPasswordLength));
   if (confirmPasswordLength < 8) {
-    alert ("Password length must be at least 8 characters")
+    alert("Password length must be at least 8 characters!")
     return;
   };
 
   if (confirmPasswordLength > 128) {
-    alert ("Password length must be no more than 128 characters")
+    alert("Password length must be no more than 128 characters!")
     return;
   };
 
@@ -31,10 +31,24 @@ function generatePassword() {
 
   var confirmSpecialCharacter = confirm("Would you like special characters?")
   console.log(confirmSpecialCharacter);
+
+  if (confirmNumber === false &&
+    confirmUpperCase === false &&
+    confirmLowerCase === false &&
+    confirmSpecialCharacter === false) {
+    alert("Password must include atleast one character type!")
+    return;
+  };
+  var generatePassword = {
+    confirmPasswordLength,
+    confirmNumber,
+    confirmUpperCase,
+    confirmLowerCase,
+  }; return(generatePassword)
 }
 
 // Write password to the #password input
-function writePassword(){
+function writePassword() {
   var password = generatePassword()
   var passwordText = document.querySelector("#password");
 
