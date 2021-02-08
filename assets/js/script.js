@@ -4,7 +4,7 @@ var generateBtn = document.querySelector("#generate");
 var number = "0123456789"
 var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"
 var lowercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var specialCharacter = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+var specialCharacter = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 var password = [number, uppercaseLetter, lowercaseLetter, specialCharacter]
 
 function generatePassword() {
@@ -36,7 +36,7 @@ function generatePassword() {
     confirmUpperCase === false &&
     confirmLowerCase === false &&
     confirmSpecialCharacter === false) {
-    alert("Password must include atleast one character type!")
+    alert("Password must include at least one character type!")
     return;
   };
   var generatePassword = {
