@@ -2,12 +2,13 @@
 var generateBtn = document.querySelector("#generate");
 
 var number = "0123456789"
-var uppercaseLetter = "abcdefghijklmnopqrstuvwxyz"
-var lowercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+var lowercaseLetter = "abcdefghijklmnopqrstuvwxyz"
+var uppercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var specialCharacter = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
-var password = [number, uppercaseLetter, lowercaseLetter, specialCharacter]
+// var password = [number, lowercaseLetter, uppercaseLetter, specialCharacter]
+var passwordPool = []
 
-function generatePassword() {
+function generateUserOption() {
   var confirmPasswordLength = prompt("Choose a password length between 8 & 128")
   console.log(parseInt(confirmPasswordLength));
   if (confirmPasswordLength < 8) {
@@ -23,31 +24,48 @@ function generatePassword() {
   var confirmNumber = confirm("Would like to include a number?")
   console.log(confirmNumber);
 
-  var confirmUpperCase = confirm("Would you like to include uppercase letters?")
-  console.log(confirmUpperCase);
-
-  var confirmLowerCase = confirm("Would you like to inlude lowercase letter?")
+  var confirmLowerCase = confirm("Would you like to include lowercase letters?")
   console.log(confirmLowerCase);
+
+  var confirmUpperCase = confirm("Would you like to inlude uppercase letters?")
+  console.log(confirmUpperCase);
 
   var confirmSpecialCharacter = confirm("Would you like special characters?")
   console.log(confirmSpecialCharacter);
 
   if (confirmNumber === false &&
-    confirmUpperCase === false &&
     confirmLowerCase === false &&
+    confirmUpperCase === false &&
     confirmSpecialCharacter === false) {
     alert("Password must include at least one character type!")
     return;
   };
-  var generatePassword = {
+  var userOption = {
     confirmPasswordLength,
     confirmNumber,
-    confirmUpperCase,
     confirmLowerCase,
-  }; return(generatePassword)
+    confirmUpperCase,
+    confirmSpecialCharacter,
+  };
+  return (userOption); 
+
 }
 
 // Write password to the #password input
+function generatePassword() {
+  var userChoice = generateUserOption();
+  console.log("User Option:", userChoice);
+  if (userChoice.confirmNumber) {
+    var numbers = number.split("");
+    console.log("Numbers: ", numbers);
+    for (var i = 0; i < numbers.length; i++) {
+      passwordPool.push(numbers[i]) 
+    }
+    console.log("Password Pool: ", passwordPool);
+  }
+
+}
+
 function writePassword() {
   var password = generatePassword()
   var passwordText = document.querySelector("#password");
