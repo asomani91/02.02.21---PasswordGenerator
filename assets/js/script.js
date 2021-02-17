@@ -1,4 +1,4 @@
-
+// Step 1: label all elements, constant variables & storage
 var generateBtn = document.querySelector("#generate");
 
 var number = "0123456789"
@@ -8,6 +8,7 @@ var specialCharacter = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 // var password = [number, lowercaseLetter, uppercaseLetter, specialCharacter]
 var passwordPool = []
 // passwordPool will hold all of the selected elements for password
+// Step 2: Create function to grab user input
 function generateUserOption() {
   var confirmPasswordLength = prompt("Choose a password length between 8 & 128")
   console.log(parseInt(confirmPasswordLength));
@@ -53,6 +54,7 @@ function generateUserOption() {
 }
 
 // Write password to the #password input
+// Step 3: Use user input to generate password
 function generatePassword() {
   var result = []
   var userChoice = generateUserOption();
@@ -83,9 +85,14 @@ function generatePassword() {
     }
   }
 
-  for (var i = 0; i < confirmPasswordLength 
+  for (var i = 0; i < userChoice.confirmPasswordLength; i++) {
+    var x = Math.floor(Math.random() * passwordPool.length)
+    result.push(passwordPool[x])
+  }
+  return (result.join(""))
 }
 
+// Step 4: Generate to page
 function writePassword() {
   var password = generatePassword()
   var passwordText = document.querySelector("#password");
@@ -93,6 +100,5 @@ function writePassword() {
   passwordText.value = password;
 
 }
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
