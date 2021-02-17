@@ -7,10 +7,11 @@ var uppercaseLetter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 var specialCharacter = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~";
 // var password = [number, lowercaseLetter, uppercaseLetter, specialCharacter]
 var passwordPool = []
-
+// passwordPool will hold all of the selected elements for password
 function generateUserOption() {
   var confirmPasswordLength = prompt("Choose a password length between 8 & 128")
   console.log(parseInt(confirmPasswordLength));
+  // to keep within a bound edgecase
   if (confirmPasswordLength < 8) {
     alert("Password length must be at least 8 characters!")
     return;
@@ -47,23 +48,42 @@ function generateUserOption() {
     confirmUpperCase,
     confirmSpecialCharacter,
   };
-  return (userOption); 
+  return (userOption);
 
 }
 
 // Write password to the #password input
 function generatePassword() {
+  var result = []
   var userChoice = generateUserOption();
   console.log("User Option:", userChoice);
   if (userChoice.confirmNumber) {
     var numbers = number.split("");
     console.log("Numbers: ", numbers);
     for (var i = 0; i < numbers.length; i++) {
-      passwordPool.push(numbers[i]) 
+      passwordPool.push(numbers[i])
     }
-    console.log("Password Pool: ", passwordPool);
+  }
+  if (userChoice.confirmLowerCase) {
+    var lower = lowercaseLetter.split("");
+    for (var i = 0; i < lower.length; i++) {
+      passwordPool.push(lower[i])
+    }
+  }
+  if (userChoice.confirmUpperCase) {
+    var upper = uppercaseLetter.split("");
+    for (var i = 0; i < upper.length; i++) {
+      passwordPool.push(upper[i])
+    }
+  }
+  if (userChoice.confirmSpecialCharacter) {
+    var special = specialCharacter.split("");
+    for (var i = 0; i < special.length; i++) {
+      passwordPool.push(special[i])
+    }
   }
 
+  for (var i = 0; i < confirmPasswordLength 
 }
 
 function writePassword() {
